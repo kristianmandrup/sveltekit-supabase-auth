@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { enhance, type SubmitFunction } from '$app/forms';
+	import { enhance } from '$app/forms';
 	import { supabaseClient } from '$lib/supabase';
 	import type { Provider } from '@supabase/supabase-js';
+	import type { SubmitFunction } from '@sveltejs/kit';
 
 	const signInWithProvider = async (provider: Provider) => {
 		const { data, error } = await supabaseClient.auth.signInWithOAuth({
@@ -9,7 +10,7 @@
 		});
 	};
 
-	const submitSocialLogin: SubmitFunction = async ({ action, cancel }) => {
+	const submitSocialLogin: SubmitFunction = async ({ action, cancel }: any) => {
 		switch (action.searchParams.get('provider')) {
 			case 'google':
 				await signInWithProvider('google');

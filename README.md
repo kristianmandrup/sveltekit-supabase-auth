@@ -1,6 +1,6 @@
-# create-svelte
+# Sveltekit Supabase Authentication
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+A sample app setup with basic username/password login and Social login via multiple OAuth providers.
 
 ## Configuration
 
@@ -22,17 +22,29 @@ Edit the URL to match the local Supabase server (f.ex `localhost:5173`)
 
 Also add a Redirect url `http://localhost:5173`
 
-## Creating a project
+### OAuth configuration for Social login
 
-If you're seeing this, you've probably already done this step. Congrats!
+Go to Supbase dashboard `Authentication` -> `Providers` at `auth/providers`
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+Enable the Oauth providers of your choice, such as Github and Google.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+#### Github Oauth config
+
+Copy the Callback URL from supabase Github Oauth config such as `https://<your project code here>.supabase.co/auth/v1/callback`
+
+For the client id and secret, go to your [Github developer settings](https://github.com/settings/developers) which can be found under your profile icon, `Settings` (ie. `settings/profile`) then `Developer settings` all the way at the bottom which takes you to `settings/apps`. From there click on `OAuth apps`
+
+In the form, register the following:
+
+- Name: `sveltekit-supabase-auth`
+- URL: `http://localhost:5173`
+- Callback URL: Past the Callback URL from Supabase Github OAuth provider
+
+Click `Register application`
+
+Click to generate a new key. When you have both the Client ID and secret key, transfer these to Supabase OAuth config.
+
+Take the Client ID of the OAuth application and copy/paste back into the Supabase Github OAuth provider configuration. Do the same for the secret. Click `save`
 
 ## Developing
 
