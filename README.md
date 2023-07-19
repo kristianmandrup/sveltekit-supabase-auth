@@ -2,6 +2,26 @@
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
+## Configuration
+
+Create a new project in Supabase
+
+Your project admin dashboard URL will be something like `https://supabase.com/dashboard/project/[unique string here]`
+
+In the repo copy `.env.example` sample file to a `.env` file
+
+Go to `/settings/api` for your Supabase project
+
+Copy the values for `PUBLIC_SUPABASE_URL` and `PUBLIC_SUPABASE_ANON_KEY` from the project to the `.env` file.
+
+In Supabase, go to `Authentication` -> `URL Configuration`
+
+Go to `auth/url-configuration` for your Supabase project
+
+Edit the URL to match the local Supabase server (f.ex `localhost:5173`)
+
+Also add a Redirect url `http://localhost:5173`
+
 ## Creating a project
 
 If you're seeing this, you've probably already done this step. Congrats!
